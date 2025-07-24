@@ -1,19 +1,31 @@
 package com.saadeh.delivery.delivery.tracking.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
+@Embeddable
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode
 @Getter
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class ContactPoint {
+    @NotBlank
     private String zipCode;
+
+    @NotBlank
     private String street;
+
+    @NotBlank
     private String number;
+
+
     private String complement;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String phone;
 }
