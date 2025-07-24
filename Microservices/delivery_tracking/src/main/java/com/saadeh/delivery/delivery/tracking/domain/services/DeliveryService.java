@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -24,6 +25,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DeliveryService {
     private final DeliveryRepository repository;
+
+    private final DeliveryTimeEstimationService deliveryTimeEstimationService;
+    private final CourierPayoutCalculationService courierPayoutCalculationService;
 
     @Transactional
     public Delivery draft(DeliveryDTO input){
@@ -73,15 +77,17 @@ public class DeliveryService {
                 .street(recipientDTO.getStreet())
                 .build();
 
-        Duration expectedDeliveryTime = Duration.ofHours(3);
-        BigDecimal payout = new BigDecimal(10);
+        DeliveryEstimate estimated = deliveryTimeEstimationService.estimated(sender, recipient);
+        BigDecimal payout = courierPayoutCalculationService.calculatePayout(10.0);
+
+        BigDecimal distanceFee = calculateFee(estimated.getDistanceInKm());
 
         Delivery.PreparationDetails preparationDetails = Delivery.PreparationDetails.builder()
                 .recipient(recipient)
                 .sender(sender)
-                .expectedDeliveryTime(expectedDeliveryTime)
+                .expectedDeliveryTime(estimated.getEstimatedTime())
                 .courierPayout(payout)
-                .distanceFee(new BigDecimal(10))
+                .distanceFee(distanceFee)
                 .build();
 
         delivery.editPreparationDetails(preparationDetails);
@@ -90,5 +96,11 @@ public class DeliveryService {
             delivery.addItem(itemDTO.getName(), itemDTO.getQuantity());
         }
 
+    }
+
+    private BigDecimal calculateFee(Double distanceInKm) {
+        return new BigDecimal(3)
+                .multiply(new BigDecimal(distanceInKm))
+                .setScale(2, RoundingMode.HALF_EVEN);
     }
 }
