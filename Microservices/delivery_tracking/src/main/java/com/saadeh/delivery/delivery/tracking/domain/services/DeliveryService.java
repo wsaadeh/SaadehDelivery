@@ -1,8 +1,8 @@
 package com.saadeh.delivery.delivery.tracking.domain.services;
 
-import com.saadeh.delivery.delivery.tracking.api.DTO.ContactPointDTO;
-import com.saadeh.delivery.delivery.tracking.api.DTO.DeliveryDTO;
-import com.saadeh.delivery.delivery.tracking.api.DTO.ItemDTO;
+import com.saadeh.delivery.delivery.tracking.api.dto.ContactPointDTO;
+import com.saadeh.delivery.delivery.tracking.api.dto.DeliveryDTO;
+import com.saadeh.delivery.delivery.tracking.api.dto.ItemDTO;
 import com.saadeh.delivery.delivery.tracking.domain.exception.DomainException;
 import com.saadeh.delivery.delivery.tracking.domain.model.ContactPoint;
 import com.saadeh.delivery.delivery.tracking.domain.model.Delivery;
@@ -12,11 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.Duration;

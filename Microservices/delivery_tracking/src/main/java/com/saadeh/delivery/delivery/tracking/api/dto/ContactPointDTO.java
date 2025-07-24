@@ -1,4 +1,4 @@
-package com.saadeh.delivery.delivery.tracking.api.DTO;
+package com.saadeh.delivery.delivery.tracking.api.dto;
 
 import lombok.*;
 

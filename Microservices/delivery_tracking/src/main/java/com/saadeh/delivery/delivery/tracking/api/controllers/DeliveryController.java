@@ -1,9 +1,8 @@
 package com.saadeh.delivery.delivery.tracking.api.controllers;
 
-import com.saadeh.delivery.delivery.tracking.api.DTO.CourierDTO;
-import com.saadeh.delivery.delivery.tracking.api.DTO.DeliveryDTO;
+import com.saadeh.delivery.delivery.tracking.api.dto.CourierDTO;
+import com.saadeh.delivery.delivery.tracking.api.dto.DeliveryDTO;
 import com.saadeh.delivery.delivery.tracking.domain.model.Delivery;
-import com.saadeh.delivery.delivery.tracking.domain.repositories.DeliveryRepository;
 import com.saadeh.delivery.delivery.tracking.domain.services.DeliveryCheckpointService;
 import com.saadeh.delivery.delivery.tracking.domain.services.DeliveryService;
 import jakarta.validation.Valid;

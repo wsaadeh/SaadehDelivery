@@ -1,13 +1,9 @@
-package com.saadeh.delivery.delivery.tracking.api.DTO;
+package com.saadeh.delivery.delivery.tracking.api.dto;
 
-import com.saadeh.delivery.delivery.tracking.domain.model.Delivery;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.util.UUID;
 
 @Setter
 @Getter
