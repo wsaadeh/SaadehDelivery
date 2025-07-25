@@ -9,3 +9,21 @@ spring:
     url: jdbc:postgresql://localhost:5434/deliverydb
     username: postgres
     password: postgres
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping:
+          delivery-placed-event:com.saadeh.delivery.delivery.tracking.domain.event.DeliveryPlacedEvent,                                
+          delivery-pickup-event:com.saadeh.delivery.delivery.tracking.domain.event.DeliveryPickUpEvent,
+          delivery-fulfilled-event:com.saadeh.delivery.delivery.tracking.domain.event.DeliveryFulFilledEvent
+
+eureka:
+  client:
+    server-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${random.value}
+    prefer-ip-address: true
