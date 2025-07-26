@@ -7,6 +7,7 @@ import com.saadeh.delivery.delivery.tracking.domain.services.DeliveryCheckpointS
 import com.saadeh.delivery.delivery.tracking.domain.services.DeliveryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
@@ -36,8 +38,14 @@ public class DeliveryController {
         return service.edit(id, input);
     }
 
+    @SneakyThrows
     @GetMapping
     public PagedModel<Delivery> findAll(@PageableDefault Pageable pageable) {
+        if (Math.random() < 0.3){
+            throw new RuntimeException();
+        }
+        int millis = new Random().nextInt(400);
+        Thread.sleep(millis);
         return service.findAll(pageable);
     }
 
