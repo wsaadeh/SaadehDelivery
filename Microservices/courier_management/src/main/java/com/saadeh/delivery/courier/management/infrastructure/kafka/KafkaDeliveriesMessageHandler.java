@@ -26,6 +26,7 @@ public class KafkaDeliveriesMessageHandler {
     public void defaultHandler(@Payload Object object,
                                @Headers MessageHeaders headers) {
         log.info("Default Handler: {}", object.getClass());
+        log.info("Payload content: {}", object);
         log.info("Headers: {}", headers);
     }
 

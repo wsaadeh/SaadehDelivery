@@ -15,6 +15,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
+        spring.json.add.type.headers: true
         spring.json.type.mapping:
           delivery-placed-event:com.saadeh.delivery.delivery.tracking.domain.event.DeliveryPlacedEvent,
           delivery-pickup-event:com.saadeh.delivery.delivery.tracking.domain.event.DeliveryPickUpEvent,
