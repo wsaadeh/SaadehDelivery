@@ -9,19 +9,19 @@
 </ul>
 
 <ul>Steps to implement Kafka:
-  <li>Considere to extends your entity using AbstractAggregateRoot<Entity></Entity></li>
+  <li>Considere to extends your entity using AbstractAggregateRoot&lt;Entity&gt;</li>
   <li>include dependencies on pom.xml: 
-<pre><code class="language-xml">
-    <dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-</code></pre>	
+	<pre><code class="language-xml">
+    		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-kafka-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+	</code></pre>
   </li>
   <li> include settings on application.yml or properties: 
         <li>Microservice who will be the Producer[Delivery-tracking]:
