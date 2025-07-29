@@ -11,6 +11,7 @@
 <ul>Steps to implement Kafka:
   <li>Considere to extends your entity using AbstractAggregateRoot<Entity></Entity></li>
   <li>include dependencies on pom.xml: 
+<pre><code class="language-xml">
     <dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
@@ -20,6 +21,7 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+</code></pre>	
   </li>
   <li> include settings on application.yml or properties: 
         <li>Microservice who will be the Producer[Delivery-tracking]:
